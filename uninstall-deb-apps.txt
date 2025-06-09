@@ -1,4 +1,5 @@
 discord
+whatsdesk
 gnome-mines
 gnome-calculator
 gnome-mahjongg

@@ -36,8 +36,8 @@ sudo dpkg -P cnrdrvcups-lipslx
 
 #Joplin
 
-sudo apt remove -y codium
-sudo rm -rf /etc/apt/sources.list.d/vscodium.list*
+rm -rf /opt/Joplin-2.8.8.AppImage
+rm -rf /usr/share/applications/joplin.desktop
 
 #OnlyOffice
 
@@ -60,9 +60,9 @@ sudo rm -rf /opt/balenaEtcher/
 
 #Spotify
 
-sudo rm -rf /usr/bin/spotify
-sudo rm -rf /usr/share/spotify/
-sudo rm -rf /usr/share/applications/spotify.desktop
+#sudo rm -rf /usr/bin/spotify
+#sudo rm -rf /usr/share/spotify/
+#sudo rm -rf /usr/share/applications/spotify.desktop
 
 ##Uninstall deb apps
 
