@@ -14,7 +14,7 @@ read employee_first_name
 echo "What is the Employee's Gram?" 
 read employee_gram
 
-sudo chfn -f "$employee_first_name ($employee_gram)" odoo
+chfn -f "$employee_first_name ($employee_gram)" odoo
 
 export DEBIAN_FRONTEND=noninteractive
 
@@ -24,13 +24,13 @@ apt install -y gnome-software-plugin-flatpak
 
 #Install dbus-x11
 
-sudo apt install -y dbus-x11
+apt install -y dbus-x11
 
 #Remove Canon Drivers
 
-sudo dpkg -P cnrdrvcups-ufr2-us
-sudo dpkg -P cnrdrvcups-ufr2-uk
-sudo dpkg -P cnrdrvcups-lipslx
+dpkg -P cnrdrvcups-ufr2-us
+dpkg -P cnrdrvcups-ufr2-uk
+dpkg -P cnrdrvcups-lipslx
 
 #Remove app images
 
@@ -46,24 +46,85 @@ rm -rf /usr/share/applications/onlyoffice-desktopeditors.desktop
 
 #Ferdium
 
-sudo rm -rf /opt/Ferdium/
-sudo rm -rf /usr/share/applications/ferdium.desktop
+rm -rf /opt/Ferdium/
+rm -rf /usr/share/applications/ferdium.desktop
 
 #Xmind
 
-sudo rm -rf /opt/Xmind/
-sudo rm -rf /usr/share/applications/xmind.desktop
+rm -rf /opt/Xmind/
+rm -rf /usr/share/applications/xmind.desktop
 
 #Balena Etcher
 
-sudo rm -rf /opt/balenaEtcher/
+rm -rf /opt/balenaEtcher/
+
+#Uninstall deb apps
+
+for f in `cat ./uninstall-deb-apps.txt` ; do apt remove -y $f ; done
+
+#Remove old or invalid deb repos
+
+rm -rf /etc/apt/sources.list.d/vscodium.list*
+rm -rf /etc/apt/sources.list.d/google-chrome.*
+rm -rf obsproject-ubuntu-obs-studio-jammy.list*
+
+#Install New deb packages
+
+#Remove Google Chrome user confuration
+
+rm -rf /home/odoo/.config/google-chrome
+
+#Google Chrome
+
+dpkg -i ./google-chrome-stable_current_amd64.deb
+
+#Warp Terminal
+
+dpkg -i ./warp-terminal_0.2025.05.21.08.11.stable.01_amd64.deb
+
+#VScode
+
+dpkg -i ./code_1.100.2-1747260578_amd64.deb
+
+#Balena Etcher
+
+sudo dpkg -i ./balena-etcher_2.1.2_amd64.deb
+
+#Htop
+
+apt install -y htop
+
+#Neovim
+
+apt install -y neovim
+
+#Apt, update, upgrade and autoremove
+
+apt update && sudo apt upgrade -y
+apt apt autoremove -y
+
+#Manual Flatpak installs
+
+#Zoom
+
+flatpak install -y app/us.zoom.Zoom/x86_64/stable
 
 #Spotify
 
-#sudo rm -rf /usr/bin/spotify
-#sudo rm -rf /usr/share/spotify/
-#sudo rm -rf /usr/share/applications/spotify.desktop
+flatpak install -y app/com.spotify.Client/x86_64/stable
 
-##Uninstall deb apps
+#Install flatpaks from USB Drive
 
-for f in `cat ./uninstall-deb-apps.txt` ; do apt remove -y * ; done
+flatpak remote-modify --collection-id=org.flathub.Stable flathub
+for f in `cat ./flatpaks_install.txt` ; do flatpak install -y --sideload-repo=./flatpak/.ostree/repo flathub $f ; done
+
+#Add all odoo SF Printers
+
+lpadmin -p CUSTOMERSUCCESS -E -v ipp://10.110.0.44/ipp/print -m everywhere
+lpadmin -p ECOMMERCE -E -v ipp://10.110.0.45/ipp/print -m everywhere
+lpadmin -p TIMESHEETS -E -v ipp://10.110.0.46/ipp/print -m everywhere
+
+
+
+
+
