@@ -66,4 +66,4 @@ sudo rm -rf /opt/balenaEtcher/
 
 ##Uninstall deb apps
 
-for f in `cat ./uninstall-deb-apps.txt' ; do apt remove -y $f ; done
+for f in `cat ./uninstall-deb-apps.txt` ; do apt remove -y * ; done

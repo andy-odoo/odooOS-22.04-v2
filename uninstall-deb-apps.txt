@@ -5,8 +5,8 @@ gnome-calculator
 gnome-mahjongg
 anydesk
 spotify-client
-onlyoffice-desktopeditors
 firefox
+google-chrome-stable
 shotwell
 cheese
 ferdium
@@ -36,4 +36,4 @@ geany
 geary
 gnome-todo
 totem
-
+kdeconnect
