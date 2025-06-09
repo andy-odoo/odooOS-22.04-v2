@@ -22,10 +22,6 @@ export DEBIAN_FRONTEND=noninteractive
 
 apt install -y gnome-software-plugin-flatpak
 
-#Install Flatseal flatpak
-
-flatpak install -y app/com.github.tchx84.Flatseal/x86_64/stable
-
 #Install dbus-x11
 
 sudo apt install -y dbus-x11
