@@ -26,7 +26,6 @@ xournal
 aisleriot
 codium
 scangearmp2
-rhythmbox*
 remmina*
 transmission-gtk
 geany
