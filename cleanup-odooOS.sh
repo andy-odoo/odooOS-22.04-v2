@@ -111,6 +111,11 @@ apt install -y npm
 apt update && sudo apt upgrade -y
 apt apt autoremove -y
 
+#Install flatpaks from USB Drive
+
+flatpak remote-modify --collection-id=org.flathub.Stable flathub
+for f in `cat ./flatpaks_install.txt` ; do flatpak install --sideload-repo=./flatpaks/.ostree/repo flathub -y $f ; done
+
 #Manual Flatpak installs
 
 #Zoom
@@ -120,11 +125,6 @@ flatpak install -y app/us.zoom.Zoom/x86_64/stable
 #Spotify
 
 flatpak install -y app/com.spotify.Client/x86_64/stable
-
-#Install flatpaks from USB Drive
-
-flatpak remote-modify --collection-id=org.flathub.Stable flathub
-for f in `cat ./flatpaks_install.txt` ; do flatpak install --sideload-repo=./flatpaks/.ostree/repo flathub -y $f ; done
 
 #Add all odoo SF Printers
 
