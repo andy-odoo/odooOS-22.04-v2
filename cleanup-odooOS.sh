@@ -94,9 +94,13 @@ dpkg -i ./code_1.100.2-1747260578_amd64.deb
 
 sudo dpkg -i ./balena-etcher_2.1.2_amd64.deb
 
-#Htop
+#htop
 
 apt install -y htop
+
+#btop
+
+apt install -y btop
 
 #Neovim
 
