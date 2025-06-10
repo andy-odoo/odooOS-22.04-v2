@@ -74,6 +74,10 @@ rm -rf obsproject-ubuntu-obs-studio-jammy.list*
 
 rm -rf /home/odoo/.config/google-chrome
 
+#Remove Google Chrome System Defaults
+
+rm -rf /etc/default/google-chrome
+
 #Google Chrome
 
 dpkg -i ./google-chrome-stable_current_amd64.deb
@@ -98,6 +102,10 @@ apt install -y htop
 
 apt install -y neovim
 
+#npm
+
+apt install -y npm
+
 #Apt, update, upgrade and autoremove
 
 apt update && sudo apt upgrade -y
@@ -116,7 +124,7 @@ flatpak install -y app/com.spotify.Client/x86_64/stable
 #Install flatpaks from USB Drive
 
 flatpak remote-modify --collection-id=org.flathub.Stable flathub
-for f in `cat ./flatpaks_install.txt` ; do flatpak install -y --sideload-repo=./flatpak/.ostree/repo flathub $f ; done
+for f in `cat ./flatpaks_install.txt` ; do flatpak install --sideload-repo=./flatpaks/.ostree/repo flathub -y $f ; done
 
 #Add all odoo SF Printers
 
