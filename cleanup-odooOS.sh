@@ -66,7 +66,7 @@ for f in `cat ./uninstall-deb-apps.txt` ; do apt remove -y $f ; done
 
 rm -rf /etc/apt/sources.list.d/vscodium.list*
 rm -rf /etc/apt/sources.list.d/google-chrome.*
-rm -rf obsproject-ubuntu-obs-studio-jammy.list*
+rm -rf /etc/apt/sources.list.d/obsproject*
 
 #Install New deb packages
 
@@ -126,13 +126,23 @@ flatpak install -y app/us.zoom.Zoom/x86_64/stable
 
 flatpak install -y app/com.spotify.Client/x86_64/stable
 
+#Update Flatpaks
+
+flatpak update
+
+#Set Icon Arrangement and settings
+
+sudo -u odoo bash -c 'dconf load / < odoo-gnome-arrangement.txt'
+
 #Add all odoo SF Printers
 
 lpadmin -p CUSTOMERSUCCESS -E -v ipp://10.110.0.44/ipp/print -m everywhere
 lpadmin -p ECOMMERCE -E -v ipp://10.110.0.45/ipp/print -m everywhere
 lpadmin -p TIMESHEETS -E -v ipp://10.110.0.46/ipp/print -m everywhere
 
+sleep 60
 
+reboot
 
 
 

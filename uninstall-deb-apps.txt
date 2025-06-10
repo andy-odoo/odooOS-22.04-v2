@@ -10,7 +10,6 @@ google-chrome-stable
 shotwell
 cheese
 ferdium
-kazam
 pinta
 obs-studio
 balena-etcher-electron
@@ -21,8 +20,6 @@ vlc*
 libreoffice*
 gnome-shell-extension-manager
 gnome-shell-extension-prefs
-flameshot
-simplescreenrecorder
 rustdesk
 xmind-vana
 xournal
