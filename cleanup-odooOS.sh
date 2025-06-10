@@ -128,7 +128,7 @@ flatpak install -y app/com.spotify.Client/x86_64/stable
 
 #Update Flatpaks
 
-flatpak update
+flatpak update -y
 
 #Set Icon Arrangement and settings
 
